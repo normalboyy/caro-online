@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Cờ Caro Online 30x30</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- MÀN HÌNH NHẬP TÊN -->
+  <div id="nameScreen" class="screen">
+    <div class="start-box">
+      <h1>Cờ Caro Online</h1>
+
+      <p>Nhập tên của bạn để bắt đầu</p>
+
+      <input
+        type="text"
+        id="startNameInput"
+        placeholder="Ví dụ: Ngọc"
+        autocomplete="off"
+      >
+
+      <button id="startNameBtn">Tiếp tục</button>
+    </div>
+  </div>
+
+  <!-- MÀN HÌNH TẠO / VÀO PHÒNG -->
+  <div id="lobbyScreen" class="screen hidden">
+    <div class="start-box">
+      <h1>Chọn phòng chơi</h1>
+
+      <p>
+        Xin chào,
+        <b id="lobbyPlayerName">Người chơi</b>
+      </p>
+
+      <button id="createRoomBtn" class="big-btn">
+        Tạo phòng mới
+      </button>
+
+      <div class="divider">hoặc</div>
+
+      <input
+        type="text"
+        id="joinRoomInput"
+        placeholder="Nhập mã phòng"
+        autocomplete="off"
+      >
+
+      <button id="joinRoomBtn" class="big-btn">
+        Vào phòng
+      </button>
+
+      <button id="changeNameBtn" class="secondary-lobby-btn">
+        Đổi tên
+      </button>
+    </div>
+  </div>
+
+  <!-- MÀN HÌNH GAME -->
+  <div id="gameScreen" class="hidden">
+    <div class="container">
+      <h1>Cờ Caro Online 30x30</h1>
+
+      <div class="panel">
+        <p>
+          <b>Tên của bạn:</b>
+          <span id="currentPlayerNameText"></span>
+        </p>
+
+        <p>
+          <b>Mã phòng:</b>
+          <span id="roomIdText"></span>
+        </p>
+
+        <p>
+          <b>Bạn là:</b>
+          <span id="mySymbolText">Đang kết nối...</span>
+        </p>
+
+        <p>
+          <b>Người chơi X:</b>
+          <span id="playerXText">Đang chờ...</span>
+        </p>
+
+        <p>
+          <b>Người chơi O:</b>
+          <span id="playerOText">Đang chờ...</span>
+        </p>
+
+        <p id="statusText" class="status">Đang tải game...</p>
+
+        <div class="room-code-box">
+          <b>Mã phòng để gửi bạn bè:</b>
+          <input type="text" id="inviteLink" readonly>
+        </div>
+
+        <div class="buttons">
+          <button id="copyRoomCodeBtn">Copy mã phòng</button>
+          <button id="copyLinkBtn">Copy link phòng</button>
+          <button id="backLobbyBtn">Về chọn phòng</button>
+          <button id="playAgainBtn" class="success" style="display: none;">Chơi tiếp</button>
+        </div>
+      </div>
+
+      <div class="board-wrapper">
+        <div id="board"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP KẾT QUẢ -->
+  <div id="resultModal" class="result-modal">
+    <div class="result-box">
+      <h2 id="resultTitle">winnn</h2>
+      <div id="resultPlayerName">Tên người chơi</div>
+      <div id="resultScore">1-0</div>
+
+      <div class="result-buttons">
+        <button id="resultPlayAgainBtn">Chơi tiếp</button>
+        <button id="resultCloseBtn">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPUP XÁC NHẬN CHƠI TIẾP -->
+  <div id="playAgainConfirmModal" class="play-again-modal">
+    <div class="play-again-box">
+      <h2>Chơi tiếp?</h2>
+
+      <p>
+        <span id="playAgainRequesterName">Đối thủ</span>
+        muốn chơi ván tiếp.
+      </p>
+
+      <div class="play-again-buttons">
+        <button id="acceptPlayAgainBtn">Đồng ý</button>
+        <button id="rejectPlayAgainBtn">Từ chối</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
