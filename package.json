@@ -1,0 +1,13 @@
+{
+  "name": "caro-online",
+  "version": "1.0.0",
+  "description": "Web co caro online 30x30",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  }
+}
