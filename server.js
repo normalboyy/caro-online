@@ -37,6 +37,7 @@ function createRoom(roomId) {
     status: "waiting",
     winner: "",
     winCells: [],
+    lastMove: null,
     playAgainRequest: null,
 
     players: {
@@ -83,6 +84,7 @@ function publicRoomData(room) {
     status: room.status,
     winner: room.winner,
     winCells: room.winCells || [],
+    lastMove: room.lastMove || null,
     playAgainRequest: room.playAgainRequest,
     players: room.players,
     names: room.names,
@@ -174,6 +176,7 @@ function startNextGame(room) {
   room.status = "playing";
   room.winner = "";
   room.winCells = [];
+  room.lastMove = null;
   room.playAgainRequest = null;
 }
 
@@ -261,6 +264,11 @@ io.on("connection", (socket) => {
     }
 
     room.board[row][col] = symbol;
+    room.lastMove = {
+  row: row,
+  col: col,
+  symbol: symbol
+};
 
     const winningCells = getWinningCells(room.board, row, col, symbol);
 
